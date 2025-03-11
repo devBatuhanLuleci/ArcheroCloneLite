@@ -22,12 +22,12 @@ namespace ArcheroLite
         private CharacterController _controller;
         private InputHandler _input;
         private AudioSource _audioSource;
+        [SerializeField]
         private Animator animator;
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<InputHandler>();
-            animator = GetComponent<Animator>();
             _audioSource = gameObject.AddComponent<AudioSource>();
         }
 
@@ -60,7 +60,7 @@ namespace ArcheroLite
         {
             Vector3 moveDirection = new Vector3(_input.move.x, 0f, _input.move.y).normalized;
             bool isMoving = moveDirection.magnitude > 0.1f;
-            animator.SetBool("Running", isMoving);
+            animator.SetBool("Run", isMoving);
         }
         private void OnFootstep(AnimationEvent animationEvent)
         {
